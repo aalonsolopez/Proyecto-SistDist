@@ -1,0 +1,21 @@
+services:
+  node-red:
+    image: nodered/node-red
+    restart: always
+    hostname: node-red
+    container_name: mynodered
+    user: "0"
+    ports:
+      - "1880:1880"
+    environment:
+      - TZ=Europe/Brussels
+    volumes:
+       - ./node-red/data:/data
+    networks:
+      iot:
+        aliases:
+          - node-red
+
+networks:
+  iot:
+    driver: bridge
