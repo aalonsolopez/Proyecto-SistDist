@@ -23,6 +23,16 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
     networks:
       - iot
+  mosquitto:
+    image: eclipse-mosquitto:2.0
+    container_name: mosquitto
+    volumes:
+    - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+    - ./mosquitto/log:/mosquitto/log/
+    ports:
+      - "1883:1883"
+    networks:
+      - iot
   kafka:
     image: confluentinc/cp-kafka:7.2.1
     container_name: kafka
