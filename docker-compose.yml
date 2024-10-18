@@ -13,16 +13,6 @@ services:
        - ./node-red/data:/data
     networks:
       - iot
-  zookeeper:
-    image: zookeeper:3.8
-    container_name: zookeeper
-    ports:
-      - "2181:2181"  # Zookeeper escucha en este puerto
-    environment:
-      ZOOKEEPER_CLIENT_PORT: 2181
-      ZOOKEEPER_TICK_TIME: 2000
-    networks:
-      - iot
   mosquitto:
     image: eclipse-mosquitto:2.0
     container_name: mosquitto
@@ -33,20 +23,21 @@ services:
       - "1883:1883"
     networks:
       - iot
-  kafka:
-    image: confluentinc/cp-kafka:7.2.1
-    container_name: kafka
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
     ports:
-      - "9092:9092"  # Kafka escucha en este puerto
-    environment:
-      KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+      - "11434:11434"
     networks:
       - iot
+    # Comment if you don't have a GPU
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 networks:
   iot:
     driver: bridge

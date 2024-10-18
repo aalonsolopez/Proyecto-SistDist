@@ -2,7 +2,15 @@
     {
         "id": "bd832416ffff02bd",
         "type": "tab",
-        "label": "Flujo 1",
+        "label": "Recepción y preprocesado de emails",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "7dce45f0a1880d5f",
+        "type": "tab",
+        "label": "Analisis de email",
         "disabled": false,
         "info": "",
         "env": []
@@ -39,32 +47,11 @@
         "sessionExpiry": ""
     },
     {
-        "id": "59b9d947f90da184",
-        "type": "mqtt in",
-        "z": "bd832416ffff02bd",
-        "name": "",
-        "topic": "test",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "9103a031a75231d5",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 570,
-        "y": 120,
-        "wires": [
-            [
-                "26b81d470bcb071f"
-            ]
-        ]
-    },
-    {
         "id": "671d4cc51f99e417",
         "type": "mqtt out",
         "z": "bd832416ffff02bd",
         "name": "",
-        "topic": "test",
+        "topic": "email/raw",
         "qos": "2",
         "retain": "true",
         "respTopic": "",
@@ -73,25 +60,8 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 570,
-        "y": 260,
-        "wires": []
-    },
-    {
-        "id": "26b81d470bcb071f",
-        "type": "debug",
-        "z": "bd832416ffff02bd",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 980,
-        "y": 120,
+        "x": 860,
+        "y": 320,
         "wires": []
     },
     {
@@ -108,17 +78,280 @@
         "saslformat": true,
         "token": "oauth2Response.access_token",
         "box": "INBOX",
-        "disposition": "None",
+        "disposition": "Read",
         "criteria": "UNSEEN",
         "repeat": "2",
         "fetch": "auto",
         "inputs": 0,
-        "x": 310,
-        "y": 260,
+        "x": 410,
+        "y": 320,
         "wires": [
             [
-                "671d4cc51f99e417"
+                "ac93f7ac0ac82bf2"
             ]
         ]
+    },
+    {
+        "id": "ac93f7ac0ac82bf2",
+        "type": "function",
+        "z": "bd832416ffff02bd",
+        "name": "Preprocesado de Emails",
+        "func": "let formatedEmail = {};\n\nformatedEmail.source = msg.from;\n\nformatedEmail.topic = msg.topic;\n\nformatedEmail.body = msg.payload;\n\nmsg.payload = formatedEmail;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 610,
+        "y": 320,
+        "wires": [
+            [
+                "671d4cc51f99e417",
+                "5aa921d1ac1bc428"
+            ]
+        ]
+    },
+    {
+        "id": "5aa921d1ac1bc428",
+        "type": "debug",
+        "z": "bd832416ffff02bd",
+        "name": "Email Preprocesado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 900,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "3ad1fdbfee3d12fe",
+        "type": "http request",
+        "z": "7dce45f0a1880d5f",
+        "name": "POST a Ollama",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://ollama:11434/api/chat",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 760,
+        "y": 320,
+        "wires": [
+            [
+                "2eaddd86dbe41ec8",
+                "24d99f72385a5032"
+            ]
+        ]
+    },
+    {
+        "id": "99a4daa01ea7f3df",
+        "type": "mqtt in",
+        "z": "7dce45f0a1880d5f",
+        "name": "",
+        "topic": "email/raw",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 320,
+        "wires": [
+            [
+                "98087a70b392e20f",
+                "e3866ee888056f20"
+            ]
+        ]
+    },
+    {
+        "id": "98087a70b392e20f",
+        "type": "function",
+        "z": "7dce45f0a1880d5f",
+        "name": "De email a llamada de Ollama",
+        "func": "msg.payload = {\n  \"model\": \"llama3.2\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Analiza el sentimiento y la categoría del siguiente email. La categoría debes distingirla entre: Ventas, Spam, Urgente y Eventos. El sentimiento puede ser: Positivo, Neutral o Negativo. Responde solo con:\\n Sentimiento: <sentimiento> \\n Categoría: <categoría>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": `De: ${msg.payload.source} \\n Asunto: ${msg.payload.topic} \\n ${msg.payload.body}`\n    }\n  ],\n  \"stream\": false\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "3ad1fdbfee3d12fe",
+                "876c04eb078b6ac3",
+                "ddfcec30e790cdb7"
+            ]
+        ]
+    },
+    {
+        "id": "e3866ee888056f20",
+        "type": "debug",
+        "z": "7dce45f0a1880d5f",
+        "name": "Llegada de Mensaje al Broker",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 410,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "876c04eb078b6ac3",
+        "type": "debug",
+        "z": "7dce45f0a1880d5f",
+        "name": "Entrada a Ollama",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "2eaddd86dbe41ec8",
+        "type": "debug",
+        "z": "7dce45f0a1880d5f",
+        "name": "Salida de Ollama",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1070,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "4d2281b39c15801c",
+        "type": "function",
+        "z": "7dce45f0a1880d5f",
+        "name": "Post-Procesado",
+        "func": "const response = msg.payload.ollama.message.content\n\nconst trimmedRes = response.trim()\n\nconst splittedRes = trimmedRes.split(' ')\n\nconst sentiment = splittedRes[1]\n\nconst category = splittedRes[4]\n\nconst email = msg.payload['email/raw'].messages[1].content\n\nconst newPayload = {\n    \"sentimiento\": sentiment,\n    \"categoria\": category,\n    \"email\": email\n}\n\nmsg.payload = newPayload\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1500,
+        "y": 320,
+        "wires": [
+            [
+                "458b5dfb8ed601d7",
+                "2ab7d381cf855dc4"
+            ]
+        ]
+    },
+    {
+        "id": "458b5dfb8ed601d7",
+        "type": "mqtt out",
+        "z": "7dce45f0a1880d5f",
+        "name": "email/analised",
+        "topic": "email/analised",
+        "qos": "2",
+        "retain": "true",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9103a031a75231d5",
+        "x": 1700,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "ddfcec30e790cdb7",
+        "type": "join",
+        "z": "7dce45f0a1880d5f",
+        "name": "",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "useparts": false,
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 1310,
+        "y": 500,
+        "wires": [
+            [
+                "4d2281b39c15801c"
+            ]
+        ]
+    },
+    {
+        "id": "24d99f72385a5032",
+        "type": "function",
+        "z": "7dce45f0a1880d5f",
+        "name": "Cambiar Topic a Ollama para Join",
+        "func": "msg.topic = \"ollama\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 320,
+        "wires": [
+            [
+                "ddfcec30e790cdb7"
+            ]
+        ]
+    },
+    {
+        "id": "2ab7d381cf855dc4",
+        "type": "debug",
+        "z": "7dce45f0a1880d5f",
+        "name": "Debug de Post Procesado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1780,
+        "y": 180,
+        "wires": []
     }
 ]
