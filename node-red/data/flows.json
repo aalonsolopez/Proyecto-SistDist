@@ -16,6 +16,22 @@
         "env": []
     },
     {
+        "id": "9b47b0d90b171c52",
+        "type": "tab",
+        "label": "Disgregación por Categoría",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "68522fb764e430f6",
+        "type": "tab",
+        "label": "Flujo 5",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
         "id": "9103a031a75231d5",
         "type": "mqtt-broker",
         "name": "",
@@ -45,6 +61,91 @@
         "willMsg": {},
         "userProps": "",
         "sessionExpiry": ""
+    },
+    {
+        "id": "76b02de1ade43375",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "showPageTitle": true,
+        "navigationStyle": "default",
+        "titleBarStyle": "default"
+    },
+    {
+        "id": "56b4d55406015f54",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "3217a5bc1176f4e9",
+        "type": "ui-page",
+        "name": "Analisis de emails",
+        "ui": "76b02de1ade43375",
+        "path": "/urgents",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "56b4d55406015f54",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "3e8e0f3662bb15a7",
+        "type": "ui-group",
+        "name": "My Group",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
     },
     {
         "id": "671d4cc51f99e417",
@@ -80,7 +181,7 @@
         "box": "INBOX",
         "disposition": "Read",
         "criteria": "UNSEEN",
-        "repeat": "2",
+        "repeat": "5",
         "fetch": "auto",
         "inputs": 0,
         "x": 410,
@@ -181,7 +282,7 @@
         "type": "function",
         "z": "7dce45f0a1880d5f",
         "name": "De email a llamada de Ollama",
-        "func": "msg.payload = {\n  \"model\": \"llama3.2\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Analiza el sentimiento y la categoría del siguiente email. La categoría debes distingirla entre: Ventas, Spam, Urgente y Eventos. El sentimiento puede ser: Positivo, Neutral o Negativo. Responde solo con:\\n Sentimiento: <sentimiento> \\n Categoría: <categoría>\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": `De: ${msg.payload.source} \\n Asunto: ${msg.payload.topic} \\n ${msg.payload.body}`\n    }\n  ],\n  \"stream\": false\n}\n\nreturn msg;",
+        "func": "msg.payload = {\n  \"model\": \"llama3.2\",\n  \"messages\": [\n    {\n      \"role\": \"system\",\n      \"content\": \"Eres un analizador basado en NLP cuyo objetivo es analizar el sentimiento y la categoría del siguiente email. La categoría debes distingirla entre: Ventas, Spam, Urgente y Eventos. El sentimiento debe uno de los siguentes: Positivo, Neutral o Negativo. Responde exclusivamente con:\\n <sentimiento> \\n <categoría>. No debes de responder más que lo anteriormente mencionado\"\n    },\n    {\n      \"role\": \"user\",\n      \"content\": `De: ${msg.payload.source} \\n Asunto: ${msg.payload.topic} \\n ${msg.payload.body}. analizar el sentimiento y la categoría del siguiente email. La categoría debes distingirla entre: Ventas, Spam, Urgente y Eventos. El sentimiento debe uno de los siguentes: Positivo, Neutral o Negativo. Responde exclusivamente con:\\n <sentimiento> \\n <categoría>.`\n    }\n  ],\n  \"stream\": false\n}\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -254,14 +355,14 @@
         "type": "function",
         "z": "7dce45f0a1880d5f",
         "name": "Post-Procesado",
-        "func": "const response = msg.payload.ollama.message.content\n\nconst trimmedRes = response.trim()\n\nconst splittedRes = trimmedRes.split(' ')\n\nconst sentiment = splittedRes[1]\n\nconst category = splittedRes[4]\n\nconst email = msg.payload['email/raw'].messages[1].content\n\nconst newPayload = {\n    \"sentimiento\": sentiment,\n    \"categoria\": category,\n    \"email\": email\n}\n\nmsg.payload = newPayload\n\nreturn msg;",
+        "func": "const response = msg.payload.ollama.message.content\n\nconst noPoints = response.replace(\".\", \"\")\n\nconst splittedRes = noPoints.split('\\n')\n\nconst sentiment = splittedRes[0].trim()\n\nconst category = splittedRes[1].trim()\n\nconst email = msg.payload['email/raw'].messages[1].content\n\nconst newPayload = {\n    \"sentimiento\": sentiment,\n    \"categoria\": category,\n    \"email\": email\n}\n\nmsg.payload = newPayload\n\nreturn msg;",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1500,
+        "x": 1520,
         "y": 320,
         "wires": [
             [
@@ -284,7 +385,7 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 1700,
+        "x": 1760,
         "y": 320,
         "wires": []
     },
@@ -310,10 +411,11 @@
         "reduceInitType": "",
         "reduceFixup": "",
         "x": 1310,
-        "y": 500,
+        "y": 480,
         "wires": [
             [
-                "4d2281b39c15801c"
+                "4d2281b39c15801c",
+                "3056ad2f4be298fa"
             ]
         ]
     },
@@ -350,8 +452,258 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1780,
+        "x": 1800,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "3056ad2f4be298fa",
+        "type": "debug",
+        "z": "7dce45f0a1880d5f",
+        "name": "Salida JOIN",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1510,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "2b17790bfe7ca765",
+        "type": "mqtt in",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "topic": "email/analised",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 320,
+        "wires": [
+            [
+                "77dce5afe863a198"
+            ]
+        ]
+    },
+    {
+        "id": "77dce5afe863a198",
+        "type": "switch",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "property": "payload.categoria",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "Eventos",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Spam",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Ventas",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "Urgente",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 680,
+        "y": 320,
+        "wires": [
+            [
+                "5d831b13fa7a5ce6",
+                "f132ab6fb2f7d027"
+            ],
+            [
+                "dadfc102d9e2d783",
+                "92d22c1bcb040e7e"
+            ],
+            [
+                "7c69bbe97c8fb1c3",
+                "14572a6118c9853e"
+            ],
+            [
+                "95cb4d10e1c8958f",
+                "13e53c7c51631607"
+            ]
+        ]
+    },
+    {
+        "id": "5d831b13fa7a5ce6",
+        "type": "debug",
+        "z": "9b47b0d90b171c52",
+        "name": "Eventos",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "dadfc102d9e2d783",
+        "type": "debug",
+        "z": "9b47b0d90b171c52",
+        "name": "Spam",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "7c69bbe97c8fb1c3",
+        "type": "debug",
+        "z": "9b47b0d90b171c52",
+        "name": "Ventas",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 930,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "95cb4d10e1c8958f",
+        "type": "debug",
+        "z": "9b47b0d90b171c52",
+        "name": "Urgente",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "f132ab6fb2f7d027",
+        "type": "mqtt out",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "topic": "email/events",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9103a031a75231d5",
+        "x": 950,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "92d22c1bcb040e7e",
+        "type": "mqtt out",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "topic": "email/events",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9103a031a75231d5",
+        "x": 950,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "14572a6118c9853e",
+        "type": "mqtt out",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "topic": "email/sales",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9103a031a75231d5",
+        "x": 950,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "13e53c7c51631607",
+        "type": "mqtt out",
+        "z": "9b47b0d90b171c52",
+        "name": "",
+        "topic": "email/urgent",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "9103a031a75231d5",
+        "x": 950,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "cd403a07d5dc0d92",
+        "type": "mqtt in",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "topic": "email/events",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 240,
+        "wires": [
+            []
+        ]
     }
 ]
