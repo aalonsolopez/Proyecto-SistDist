@@ -16,9 +16,9 @@
         "env": []
     },
     {
-        "id": "9b47b0d90b171c52",
+        "id": "e9034fdd37127ac3",
         "type": "tab",
-        "label": "Disgregación por Categoría",
+        "label": "De analised a categorías",
         "disabled": false,
         "info": "",
         "env": []
@@ -26,7 +26,31 @@
     {
         "id": "68522fb764e430f6",
         "type": "tab",
-        "label": "Flujo 5",
+        "label": "Dashboard de Visor de Sentimiento por Categoría",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "23e653bb4878df19",
+        "type": "tab",
+        "label": "Chart de Total por categorías.",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "ddc2a1bc0a1e7061",
+        "type": "tab",
+        "label": "Reset Gauges",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "b9362e13e403b008",
+        "type": "tab",
+        "label": "Reset Chart",
         "disabled": false,
         "info": "",
         "env": []
@@ -100,9 +124,177 @@
     {
         "id": "3217a5bc1176f4e9",
         "type": "ui-page",
-        "name": "Analisis de emails",
+        "name": "Visor de Sentimientos por Categoría",
         "ui": "76b02de1ade43375",
-        "path": "/urgents",
+        "path": "/sentiment",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "56b4d55406015f54",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "3e8e0f3662bb15a7",
+        "type": "ui-group",
+        "name": "Ultimo email de Evento",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "5e5a9b0794d8705a",
+        "type": "ui-group",
+        "name": "Analisis de sentimiento en Eventos",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 2,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "42aa3fde1a9b1ef0",
+        "type": "ui-group",
+        "name": "Ultimo email de Urgentes",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 3,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "f3bff335663ddc79",
+        "type": "ui-group",
+        "name": "Analisis de sentimiento de Urgentes",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 4,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "f49546438aab33a2",
+        "type": "ui-group",
+        "name": "Ultimo email de Spam",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 5,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "3fa595fcedee010d",
+        "type": "ui-group",
+        "name": "Analisis de sentimiento de Spam",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 6,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "39ab382f585db66f",
+        "type": "ui-group",
+        "name": "Ultimo email de Sales",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 7,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b3d65d38b0a7702c",
+        "type": "ui-group",
+        "name": "Analisis de sentimiento de Sales",
+        "page": "3217a5bc1176f4e9",
+        "width": "6",
+        "height": "1",
+        "order": 8,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "b50cbd9088d5a4b7",
+        "type": "telegram client config",
+        "botname": "UrgentAdvisor",
+        "verboselogging": false,
+        "loginmode": "bot",
+        "useproxy": false,
+        "usewss": false,
+        "devicemodel": "",
+        "systemversion": "",
+        "appversion": "",
+        "host": "",
+        "sockstype": "5",
+        "port": "6667",
+        "username": "anonymous",
+        "password": "",
+        "secret": "",
+        "mtproxy": false,
+        "timeout": "2"
+    },
+    {
+        "id": "06a4c5db175e88e9",
+        "type": "ui-page",
+        "name": "Analisis de Categorías",
+        "ui": "76b02de1ade43375",
+        "path": "/categories",
         "icon": "home",
         "layout": "grid",
         "theme": "56b4d55406015f54",
@@ -134,14 +326,14 @@
         "disabled": "false"
     },
     {
-        "id": "3e8e0f3662bb15a7",
+        "id": "29f32a6061a66dd8",
         "type": "ui-group",
-        "name": "My Group",
-        "page": "3217a5bc1176f4e9",
+        "name": "Visor de total de Categorías",
+        "page": "06a4c5db175e88e9",
         "width": "6",
         "height": "1",
         "order": 1,
-        "showTitle": false,
+        "showTitle": true,
         "className": "",
         "visible": "true",
         "disabled": "false",
@@ -180,15 +372,15 @@
         "token": "oauth2Response.access_token",
         "box": "INBOX",
         "disposition": "Read",
-        "criteria": "UNSEEN",
+        "criteria": "ALL",
         "repeat": "5",
         "fetch": "auto",
         "inputs": 0,
-        "x": 410,
+        "x": 210,
         "y": 320,
         "wires": [
             [
-                "ac93f7ac0ac82bf2"
+                "fdabb43a7664e904"
             ]
         ]
     },
@@ -229,6 +421,31 @@
         "x": 900,
         "y": 440,
         "wires": []
+    },
+    {
+        "id": "fdabb43a7664e904",
+        "type": "delay",
+        "z": "bd832416ffff02bd",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 320,
+        "wires": [
+            [
+                "ac93f7ac0ac82bf2"
+            ]
+        ]
     },
     {
         "id": "3ad1fdbfee3d12fe",
@@ -474,9 +691,9 @@
         "wires": []
     },
     {
-        "id": "2b17790bfe7ca765",
+        "id": "6bb9d5a5a292ed07",
         "type": "mqtt in",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "topic": "email/analised",
         "qos": "2",
@@ -486,18 +703,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 390,
-        "y": 320,
+        "x": 490,
+        "y": 420,
         "wires": [
             [
-                "77dce5afe863a198"
+                "88201a31a5489291"
             ]
         ]
     },
     {
-        "id": "77dce5afe863a198",
+        "id": "88201a31a5489291",
         "type": "switch",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "property": "payload.categoria",
         "propertyType": "msg",
@@ -526,33 +743,33 @@
         "checkall": "false",
         "repair": false,
         "outputs": 4,
-        "x": 680,
-        "y": 320,
+        "x": 780,
+        "y": 420,
         "wires": [
             [
-                "5d831b13fa7a5ce6",
-                "f132ab6fb2f7d027"
+                "ebffef36ca367436",
+                "d3d81a1e17a27a35"
             ],
             [
-                "dadfc102d9e2d783",
-                "92d22c1bcb040e7e"
+                "108f0b1f6dc00ed2",
+                "fd4fad9d12b5fa61"
             ],
             [
-                "7c69bbe97c8fb1c3",
-                "14572a6118c9853e"
+                "ac690eb3a0bbd4ef",
+                "0bc185fe350d4e64"
             ],
             [
-                "95cb4d10e1c8958f",
-                "13e53c7c51631607"
+                "f2ce335a2a398d29",
+                "cc71d74f3bd82241"
             ]
         ]
     },
     {
-        "id": "5d831b13fa7a5ce6",
+        "id": "ebffef36ca367436",
         "type": "debug",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "Eventos",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -560,14 +777,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 60,
+        "x": 1040,
+        "y": 160,
         "wires": []
     },
     {
-        "id": "dadfc102d9e2d783",
+        "id": "108f0b1f6dc00ed2",
         "type": "debug",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "Spam",
         "active": false,
         "tosidebar": true,
@@ -577,14 +794,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 200,
+        "x": 1030,
+        "y": 300,
         "wires": []
     },
     {
-        "id": "7c69bbe97c8fb1c3",
+        "id": "ac690eb3a0bbd4ef",
         "type": "debug",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "Ventas",
         "active": false,
         "tosidebar": true,
@@ -594,14 +811,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 930,
-        "y": 340,
+        "x": 1030,
+        "y": 440,
         "wires": []
     },
     {
-        "id": "95cb4d10e1c8958f",
+        "id": "f2ce335a2a398d29",
         "type": "debug",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "Urgente",
         "active": false,
         "tosidebar": true,
@@ -611,14 +828,14 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 480,
+        "x": 1040,
+        "y": 580,
         "wires": []
     },
     {
-        "id": "f132ab6fb2f7d027",
+        "id": "d3d81a1e17a27a35",
         "type": "mqtt out",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "topic": "email/events",
         "qos": "",
@@ -629,14 +846,14 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 950,
-        "y": 120,
+        "x": 1050,
+        "y": 220,
         "wires": []
     },
     {
-        "id": "92d22c1bcb040e7e",
+        "id": "fd4fad9d12b5fa61",
         "type": "mqtt out",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "topic": "email/events",
         "qos": "",
@@ -647,14 +864,14 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 950,
-        "y": 260,
+        "x": 1050,
+        "y": 360,
         "wires": []
     },
     {
-        "id": "14572a6118c9853e",
+        "id": "0bc185fe350d4e64",
         "type": "mqtt out",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "topic": "email/sales",
         "qos": "",
@@ -665,14 +882,14 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 950,
-        "y": 400,
+        "x": 1050,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "13e53c7c51631607",
+        "id": "cc71d74f3bd82241",
         "type": "mqtt out",
-        "z": "9b47b0d90b171c52",
+        "z": "e9034fdd37127ac3",
         "name": "",
         "topic": "email/urgent",
         "qos": "",
@@ -683,8 +900,8 @@
         "correl": "",
         "expiry": "",
         "broker": "9103a031a75231d5",
-        "x": 950,
-        "y": 540,
+        "x": 1050,
+        "y": 640,
         "wires": []
     },
     {
@@ -700,10 +917,1485 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 230,
+        "x": 200,
+        "y": 40,
+        "wires": [
+            [
+                "0d011aa302ffd3cb"
+            ]
+        ]
+    },
+    {
+        "id": "0d011aa302ffd3cb",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Separación del cuerpo del mensaje",
+        "func": "let email = msg.payload.email\n\nconst remitenteStart = email.indexOf(\"De:\") + 3;  // Saltamos \"De: \"\nconst remitenteEnd = email.indexOf(\"Asunto:\");\nconst remitente = email.substring(remitenteStart, remitenteEnd).trim();\n\nconst asuntoStart = remitenteEnd + 7;  // Saltamos \"Asunto: \"\nconst asuntoEnd = email.indexOf(\"\\n\", asuntoStart);  // Hasta el fin de la línea\nconst asunto = asuntoEnd !== -1 ? email.substring(asuntoStart, asuntoEnd).trim() : email.substring(asuntoStart).trim();\n\nconst cuerpoCompleto = asuntoEnd !== -1 ? email.substring(asuntoEnd + 1).trim() : \"\";\nconst indexAnalisis = cuerpoCompleto.indexOf(\". analizar el sentimiento\");\nconst cuerpo = indexAnalisis !== -1 ? cuerpoCompleto.substring(0, indexAnalisis).trim() : cuerpoCompleto;\n\n\nmsg.payload.email = undefined\n\nmsg.payload.asunto = asunto\nmsg.payload.remitente = remitente\nmsg.payload.cuerpo = cuerpo\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 40,
+        "wires": [
+            [
+                "30e2e649157a56ac",
+                "e2cd4f910d067765",
+                "309c15cb88b189ef",
+                "5d61fdba45d666cd",
+                "2bdc0a232c6ddede"
+            ]
+        ]
+    },
+    {
+        "id": "730ae773a82f103e",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "3e8e0f3662bb15a7",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Asunto",
+        "label": "Asunto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "30e2e649157a56ac",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.asunto",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 120,
+        "wires": [
+            [
+                "730ae773a82f103e"
+            ]
+        ]
+    },
+    {
+        "id": "e2cd4f910d067765",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.remitente",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 40,
+        "wires": [
+            [
+                "e722c7b177d706ba"
+            ]
+        ]
+    },
+    {
+        "id": "e722c7b177d706ba",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "3e8e0f3662bb15a7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Remitente",
+        "label": "Remitente",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1200,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "ead0a49ea759fb32",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "3e8e0f3662bb15a7",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "name": "Cuerpo",
+        "label": "Cuerpo",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "309c15cb88b189ef",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cuerpo",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 940,
+        "y": 200,
+        "wires": [
+            [
+                "ead0a49ea759fb32"
+            ]
+        ]
+    },
+    {
+        "id": "1cd396c1d397d608",
+        "type": "ui-gauge",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "group": "5e5a9b0794d8705a",
+        "order": 1,
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Sentimiento general",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ff0000"
+            },
+            {
+                "from": "25",
+                "color": "#ffff00"
+            },
+            {
+                "from": "50",
+                "color": "#ccff00"
+            },
+            {
+                "from": "75",
+                "color": "#5cd65c"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1226.7777404785156,
+        "y": 318.8888931274414,
+        "wires": []
+    },
+    {
+        "id": "5d61fdba45d666cd",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Procesado de Gauge",
+        "func": "let sentiment = msg.payload.sentimiento\n\nlet valorGauge = global.get(\"gaugeEvents\");\n\nif (valorGauge == undefined) {\n    global.set(\"gaugeEvents\", 50)\n}\n\nvalorGauge = global.get(\"gaugeEvents\");\n\nlet sumado\n\nswitch (sentiment) {\n    case \"Positivo\":\n        sumado = 1;\n        break;\n    case \"Negativo\":\n        sumado = -1;\n        break;\n    case \"Neutral\":\n    default:\n        sumado = 0;\n        break;\n}\n\nif (valorGauge < 100 && valorGauge > 0) {\n    valorGauge = valorGauge + sumado;\n}\n\nmsg.payload = valorGauge\n\nglobal.set(\"gaugeEvents\", valorGauge)\n\nreturn msg\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 937.7777404785156,
+        "y": 318.8888931274414,
+        "wires": [
+            [
+                "1cd396c1d397d608"
+            ]
+        ]
+    },
+    {
+        "id": "84e4abbdf7f518f7",
+        "type": "mqtt in",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "topic": "email/urgent",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "d36867e8c91cd99e"
+            ]
+        ]
+    },
+    {
+        "id": "d36867e8c91cd99e",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Separación del cuerpo del mensaje",
+        "func": "let email = msg.payload.email\n\nconst remitenteStart = email.indexOf(\"De:\") + 3;  // Saltamos \"De: \"\nconst remitenteEnd = email.indexOf(\"Asunto:\");\nconst remitente = email.substring(remitenteStart, remitenteEnd).trim();\n\nconst asuntoStart = remitenteEnd + 7;  // Saltamos \"Asunto: \"\nconst asuntoEnd = email.indexOf(\"\\n\", asuntoStart);  // Hasta el fin de la línea\nconst asunto = asuntoEnd !== -1 ? email.substring(asuntoStart, asuntoEnd).trim() : email.substring(asuntoStart).trim();\n\nconst cuerpoCompleto = asuntoEnd !== -1 ? email.substring(asuntoEnd + 1).trim() : \"\";\nconst indexAnalisis = cuerpoCompleto.indexOf(\". analizar el sentimiento\");\nconst cuerpo = indexAnalisis !== -1 ? cuerpoCompleto.substring(0, indexAnalisis).trim() : cuerpoCompleto;\n\n\nmsg.payload.email = undefined\n\nmsg.payload.asunto = asunto\nmsg.payload.remitente = remitente\nmsg.payload.cuerpo = cuerpo\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 440,
+        "wires": [
+            [
+                "71abe0f3cc58f7f2",
+                "c4978c08bfbb96f6",
+                "7e42b8df1e0e0c61",
+                "6853c1f9ce847786",
+                "fb7189ca5239ea03",
+                "4d3715c07f18fd74"
+            ]
+        ]
+    },
+    {
+        "id": "7c3094d8181a5263",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "42aa3fde1a9b1ef0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Asunto",
+        "label": "Asunto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "71abe0f3cc58f7f2",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.asunto",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 520,
+        "wires": [
+            [
+                "7c3094d8181a5263"
+            ]
+        ]
+    },
+    {
+        "id": "c4978c08bfbb96f6",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.remitente",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 440,
+        "wires": [
+            [
+                "ea74eb5cca852b6a"
+            ]
+        ]
+    },
+    {
+        "id": "ea74eb5cca852b6a",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "42aa3fde1a9b1ef0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Remitente",
+        "label": "Remitente",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1dea2dea8ddb10bb",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "42aa3fde1a9b1ef0",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "name": "Cuerpo",
+        "label": "Cuerpo",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "7e42b8df1e0e0c61",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cuerpo",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 600,
+        "wires": [
+            [
+                "1dea2dea8ddb10bb"
+            ]
+        ]
+    },
+    {
+        "id": "7dd7339bffb4a252",
+        "type": "ui-gauge",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "group": "f3bff335663ddc79",
+        "order": 1,
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Sentimiento general",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ff0000"
+            },
+            {
+                "from": "25",
+                "color": "#ffff00"
+            },
+            {
+                "from": "50",
+                "color": "#ccff00"
+            },
+            {
+                "from": "75",
+                "color": "#5cd65c"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1220,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "6853c1f9ce847786",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Procesado de Gauge",
+        "func": "let sentiment = msg.payload.sentimiento\n\nlet valorGauge = global.get(\"gaugeUrgent\");\n\nif (valorGauge == undefined) {\n    global.set(\"gaugeUrgent\", 50)\n}\n\nvalorGauge = global.get(\"gaugeUrgent\");\n\nlet sumado\n\nswitch (sentiment) {\n    case \"Positivo\":\n        sumado = 1;\n        break;\n    case \"Negativo\":\n        sumado = -1;\n        break;\n    case \"Neutral\":\n    default:\n        sumado = 0;\n        break;\n}\n\nif (valorGauge < 100 && valorGauge > 0) {\n    valorGauge = valorGauge + sumado;\n}\n\nmsg.payload = valorGauge\n\nglobal.set(\"gaugeUrgent\", valorGauge)\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 920,
+        "y": 720,
+        "wires": [
+            [
+                "7dd7339bffb4a252"
+            ]
+        ]
+    },
+    {
+        "id": "f4cbf41023ddb307",
+        "type": "mqtt in",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "topic": "email/spam",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 190,
+        "y": 1020,
+        "wires": [
+            [
+                "27f9e694414f6639"
+            ]
+        ]
+    },
+    {
+        "id": "27f9e694414f6639",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Separación del cuerpo del mensaje",
+        "func": "let email = msg.payload.email\n\nconst remitenteStart = email.indexOf(\"De:\") + 3;  // Saltamos \"De: \"\nconst remitenteEnd = email.indexOf(\"Asunto:\");\nconst remitente = email.substring(remitenteStart, remitenteEnd).trim();\n\nconst asuntoStart = remitenteEnd + 7;  // Saltamos \"Asunto: \"\nconst asuntoEnd = email.indexOf(\"\\n\", asuntoStart);  // Hasta el fin de la línea\nconst asunto = asuntoEnd !== -1 ? email.substring(asuntoStart, asuntoEnd).trim() : email.substring(asuntoStart).trim();\n\nconst cuerpoCompleto = asuntoEnd !== -1 ? email.substring(asuntoEnd + 1).trim() : \"\";\nconst indexAnalisis = cuerpoCompleto.indexOf(\". analizar el sentimiento\");\nconst cuerpo = indexAnalisis !== -1 ? cuerpoCompleto.substring(0, indexAnalisis).trim() : cuerpoCompleto;\n\n\nmsg.payload.email = undefined\n\nmsg.payload.asunto = asunto\nmsg.payload.remitente = remitente\nmsg.payload.cuerpo = cuerpo\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 1020,
+        "wires": [
+            [
+                "4c855c4faf1307f8",
+                "a81b1368933b4ea5",
+                "9fdb32f35997eb7b",
+                "3c4d598ee3f65fef",
+                "50f30aba3a214db3"
+            ]
+        ]
+    },
+    {
+        "id": "d76f9464aa38c792",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "f49546438aab33a2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Asunto",
+        "label": "Asunto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "4c855c4faf1307f8",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.asunto",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 1100,
+        "wires": [
+            [
+                "d76f9464aa38c792"
+            ]
+        ]
+    },
+    {
+        "id": "a81b1368933b4ea5",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.remitente",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 1020,
+        "wires": [
+            [
+                "ad6aebcbc33dbc55"
+            ]
+        ]
+    },
+    {
+        "id": "ad6aebcbc33dbc55",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "f49546438aab33a2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Remitente",
+        "label": "Remitente",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "3bd50fa11c5c852e",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "f49546438aab33a2",
+        "order": 2,
+        "width": "6",
+        "height": "1",
+        "name": "Cuerpo",
+        "label": "Cuerpo",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "9fdb32f35997eb7b",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cuerpo",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 1180,
+        "wires": [
+            [
+                "3bd50fa11c5c852e"
+            ]
+        ]
+    },
+    {
+        "id": "4c94130eb19985d9",
+        "type": "ui-gauge",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "group": "3fa595fcedee010d",
+        "order": 1,
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Sentimiento general",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ff0000"
+            },
+            {
+                "from": "25",
+                "color": "#ffff00"
+            },
+            {
+                "from": "50",
+                "color": "#ccff00"
+            },
+            {
+                "from": "75",
+                "color": "#5cd65c"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1219,
+        "y": 1280,
+        "wires": []
+    },
+    {
+        "id": "3c4d598ee3f65fef",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Procesado de Gauge",
+        "func": "let sentiment = msg.payload.sentimiento\n\nlet valorGauge = global.get(\"gaugeSpam\");\n\nif (valorGauge == undefined) {\n    global.set(\"gaugeSpam\", 50)\n}\n\nvalorGauge = global.get(\"gaugeSpam\");\n\nlet sumado\n\nswitch (sentiment) {\n    case \"Positivo\":\n        sumado = 1;\n        break;\n    case \"Negativo\":\n        sumado = -1;\n        break;\n    case \"Neutral\":\n    default:\n        sumado = 0;\n        break;\n}\n\nif (valorGauge < 100 && valorGauge > 0) {\n    valorGauge = valorGauge + sumado;\n}\n\nmsg.payload = valorGauge\n\nglobal.set(\"gaugeSpam\", valorGauge)\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 1280,
+        "wires": [
+            [
+                "4c94130eb19985d9"
+            ]
+        ]
+    },
+    {
+        "id": "27f27c061e293678",
+        "type": "mqtt in",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "topic": "email/sales",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 1420,
+        "wires": [
+            [
+                "14fcd189e7035e50"
+            ]
+        ]
+    },
+    {
+        "id": "14fcd189e7035e50",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Separación del cuerpo del mensaje",
+        "func": "let email = msg.payload.email\n\nconst remitenteStart = email.indexOf(\"De:\") + 3;  // Saltamos \"De: \"\nconst remitenteEnd = email.indexOf(\"Asunto:\");\nconst remitente = email.substring(remitenteStart, remitenteEnd).trim();\n\nconst asuntoStart = remitenteEnd + 7;  // Saltamos \"Asunto: \"\nconst asuntoEnd = email.indexOf(\"\\n\", asuntoStart);  // Hasta el fin de la línea\nconst asunto = asuntoEnd !== -1 ? email.substring(asuntoStart, asuntoEnd).trim() : email.substring(asuntoStart).trim();\n\nconst cuerpoCompleto = asuntoEnd !== -1 ? email.substring(asuntoEnd + 1).trim() : \"\";\nconst indexAnalisis = cuerpoCompleto.indexOf(\". analizar el sentimiento\");\nconst cuerpo = indexAnalisis !== -1 ? cuerpoCompleto.substring(0, indexAnalisis).trim() : cuerpoCompleto;\n\n\nmsg.payload.email = undefined\n\nmsg.payload.asunto = asunto\nmsg.payload.remitente = remitente\nmsg.payload.cuerpo = cuerpo\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 1420,
+        "wires": [
+            [
+                "b5aae961c32b6db5",
+                "27f1b4aaa77f37b3",
+                "322fa26e41b5797a",
+                "a1c818a83b56fcb6",
+                "a95f03ad73a79f93"
+            ]
+        ]
+    },
+    {
+        "id": "d4bea0ee6fee0971",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "39ab382f585db66f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Asunto",
+        "label": "Asunto",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1170,
+        "y": 1500,
+        "wires": []
+    },
+    {
+        "id": "b5aae961c32b6db5",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.asunto",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1500,
+        "wires": [
+            [
+                "d4bea0ee6fee0971"
+            ]
+        ]
+    },
+    {
+        "id": "27f1b4aaa77f37b3",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.remitente",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1420,
+        "wires": [
+            [
+                "c4e6119c8eccfe5a"
+            ]
+        ]
+    },
+    {
+        "id": "c4e6119c8eccfe5a",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "39ab382f585db66f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "Remitente",
+        "label": "Remitente",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 1420,
+        "wires": []
+    },
+    {
+        "id": "4496c1aab6f98bd6",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "39ab382f585db66f",
+        "order": 3,
+        "width": "6",
+        "height": "1",
+        "name": "Cuerpo",
+        "label": "Cuerpo",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1170,
+        "y": 1580,
+        "wires": []
+    },
+    {
+        "id": "322fa26e41b5797a",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.cuerpo",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1580,
+        "wires": [
+            [
+                "4496c1aab6f98bd6"
+            ]
+        ]
+    },
+    {
+        "id": "524c58517116e5b4",
+        "type": "ui-gauge",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "group": "b3d65d38b0a7702c",
+        "order": 1,
+        "width": "6",
+        "height": 3,
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Sentimiento general",
+        "units": "units",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ff0000"
+            },
+            {
+                "from": "25",
+                "color": "#ffff00"
+            },
+            {
+                "from": "50",
+                "color": "#ccff00"
+            },
+            {
+                "from": "75",
+                "color": "#5cd65c"
+            }
+        ],
+        "min": "0",
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1210,
+        "y": 1700,
+        "wires": []
+    },
+    {
+        "id": "a1c818a83b56fcb6",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Procesado de Gauge",
+        "func": "let sentiment = msg.payload.sentimiento\n\nlet valorGauge = global.get(\"gaugeSales\");\n\nif (valorGauge == undefined) {\n    global.set(\"gaugeSales\", 50)\n}\n\nvalorGauge = global.get(\"gaugeSales\");\n\nlet sumado\n\nswitch (sentiment) {\n    case \"Positivo\":\n        sumado = 1;\n        break;\n    case \"Negativo\":\n        sumado = -1;\n        break;\n    case \"Neutral\":\n    default:\n        sumado = 0;\n        break;\n}\n\nif (valorGauge < 100 && valorGauge > 0) {\n    valorGauge = valorGauge + sumado;\n}\n\nmsg.payload = valorGauge\n\nglobal.set(\"gaugeSales\", valorGauge)\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 1700,
+        "wires": [
+            [
+                "524c58517116e5b4"
+            ]
+        ]
+    },
+    {
+        "id": "2bdc0a232c6ddede",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.sentimiento",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 947.7777404785156,
+        "y": 258.8888931274414,
+        "wires": [
+            [
+                "e71264bd096d1a9e"
+            ]
+        ]
+    },
+    {
+        "id": "e71264bd096d1a9e",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "3e8e0f3662bb15a7",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "name": "Sentimiento",
+        "label": "Sentimiento",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1207.7777404785156,
+        "y": 258.8888931274414,
+        "wires": []
+    },
+    {
+        "id": "3a3fab91162b1108",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "42aa3fde1a9b1ef0",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "name": "Sentimiento",
+        "label": "Sentimiento",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "fb7189ca5239ea03",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.sentimiento",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 660,
+        "wires": [
+            [
+                "3a3fab91162b1108"
+            ]
+        ]
+    },
+    {
+        "id": "5bd5fe9522cb034f",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "f49546438aab33a2",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "name": "Sentimiento",
+        "label": "Sentimiento",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1190,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "50f30aba3a214db3",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.sentimiento",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 1220,
+        "wires": [
+            [
+                "5bd5fe9522cb034f"
+            ]
+        ]
+    },
+    {
+        "id": "ded7441c2135a891",
+        "type": "ui-text",
+        "z": "68522fb764e430f6",
+        "group": "39ab382f585db66f",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "name": "Sentimiento",
+        "label": "Sentimiento",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "style": false,
+        "font": "",
+        "fontSize": 16,
+        "color": "#717171",
+        "className": "",
+        "x": 1180,
+        "y": 1640,
+        "wires": []
+    },
+    {
+        "id": "a95f03ad73a79f93",
+        "type": "change",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.sentimiento",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 1640,
+        "wires": [
+            [
+                "ded7441c2135a891"
+            ]
+        ]
+    },
+    {
+        "id": "594c78eef3ed7e63",
+        "type": "telegram client sender",
+        "z": "68522fb764e430f6",
+        "name": "",
+        "bot": "b50cbd9088d5a4b7",
+        "x": 1220,
+        "y": 800,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4d3715c07f18fd74",
+        "type": "function",
+        "z": "68522fb764e430f6",
+        "name": "Envio usando API",
+        "func": "let randomId = BigInt(Math.floor(Math.random() * 1e15));\nlet username = msg.payload;\nmsg.payload = {\n   api: 'messages',\n   func: 'SendMessage',\n   args: {\n       peer: \"aalonsolopz\",\n       message: `De: ${msg.payload.remitente}\\n Asunto: ${msg.payload.asunto}\\n\\n ${msg.payload.cuerpo}`,\n       randomId: randomId,\n       noWebpage: true,\n       noforwards: true,\n   }\n}\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 910,
+        "y": 800,
+        "wires": [
+            [
+                "594c78eef3ed7e63"
+            ]
+        ]
+    },
+    {
+        "id": "52159f9b01368a1a",
+        "type": "ui-chart",
+        "z": "23e653bb4878df19",
+        "group": "29f32a6061a66dd8",
+        "name": "",
+        "label": "chart",
+        "order": 1,
+        "chartType": "bar",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "Categorías",
+        "xAxisProperty": "payload.categoria",
+        "xAxisPropertyType": "msg",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Número de Correos",
+        "yAxisProperty": "payload.numero",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": 6,
+        "height": 8,
+        "className": "",
+        "x": 770,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e132b2cd48395077",
+        "type": "mqtt in",
+        "z": "23e653bb4878df19",
+        "name": "",
+        "topic": "email/analised",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "9103a031a75231d5",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "01df256375bff64b"
+            ]
+        ]
+    },
+    {
+        "id": "01df256375bff64b",
+        "type": "function",
+        "z": "23e653bb4878df19",
+        "name": "function 1",
+        "func": "let num\n\nlet cat = msg.payload.categoria\n\nif (cat != \"Ventas\" && cat != \"Spam\" && cat != \"Urgente\" && cat != \"Eventos\") {\n    cat = \"FalloAnalisis\"\n}\n\nnum = global.get(cat)\n\nif (num == undefined) {\n    num = 0;\n    global.set(cat, 0)\n}\n\nnum++\n\nglobal.set(cat, num)\n\nmsg.payload = {\n    categoria: cat,\n    numero: num\n}\n\nreturn msg",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "52159f9b01368a1a"
+            ]
+        ]
+    },
+    {
+        "id": "08fda837facd328a",
+        "type": "change",
+        "z": "ddc2a1bc0a1e7061",
+        "name": "Reset Gauges",
+        "rules": [
+            {
+                "t": "set",
+                "p": "gaugeEvents",
+                "pt": "global",
+                "to": "50",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "gaugeSales",
+                "pt": "global",
+                "to": "50",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "gaugeSpam",
+                "pt": "global",
+                "to": "50",
+                "tot": "num"
+            },
+            {
+                "t": "set",
+                "p": "gaugeUrgent",
+                "pt": "global",
+                "to": "50",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 740,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2945d3b85d4e098b",
+        "type": "inject",
+        "z": "ddc2a1bc0a1e7061",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 490,
+        "y": 260,
+        "wires": [
+            [
+                "08fda837facd328a"
+            ]
+        ]
+    },
+    {
+        "id": "f8c514d926148fb0",
+        "type": "change",
+        "z": "b9362e13e403b008",
+        "name": "Reset Chart",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "Eventos",
+                "pt": "global"
+            },
+            {
+                "t": "delete",
+                "p": "Spam",
+                "pt": "global"
+            },
+            {
+                "t": "delete",
+                "p": "Urgente",
+                "pt": "global"
+            },
+            {
+                "t": "delete",
+                "p": "Ventas",
+                "pt": "global"
+            },
+            {
+                "t": "delete",
+                "p": "FalloAnalisis",
+                "pt": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 770,
         "y": 240,
         "wires": [
             []
+        ]
+    },
+    {
+        "id": "a335eec2c45d9196",
+        "type": "inject",
+        "z": "b9362e13e403b008",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "f8c514d926148fb0"
+            ]
         ]
     }
 ]

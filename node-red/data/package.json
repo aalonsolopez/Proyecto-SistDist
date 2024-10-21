@@ -5,8 +5,7 @@
     "private": true,
     "dependencies": {
         "@flowfuse/node-red-dashboard": "~1.18.1",
-        "node-red-contrib-aedes": "~0.13.0",
-        "node-red-contrib-kafka-manager": "~0.5.1",
-        "node-red-node-email": "~3.0.2"
+        "node-red-node-email": "~3.0.2",
+        "node-red-node-telegrambot": "~0.1.6"
     }
 }
